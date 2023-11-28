@@ -44,7 +44,7 @@ func NewCredentialProvider(ctx context.Context, client client.Client, obj client
 			return nil, fmt.Errorf("unsupported authentication method %s", authObj.Spec.Method)
 		}
 
-		if err := prov.Init(ctx, client, authObj, providerNamespace); err != nil {
+		if err := prov.Init(ctx, client, authObj, authObj.GetNamespace()); err != nil {
 			return nil, err
 		}
 
